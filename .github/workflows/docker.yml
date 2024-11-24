@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - "master"
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+      - '!.github/workflows/docker.yml'
     tags:
       - 'v*'
 
