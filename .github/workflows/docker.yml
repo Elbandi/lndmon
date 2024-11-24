@@ -14,7 +14,6 @@ defaults:
 
 env:
   REGISTRY: ghcr.io
-  DOCKER_REPO: ${{ github.repository_owner }}
   DOCKER_IMAGE: lndmon
 
 jobs:
@@ -35,7 +34,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run: |
+            echo "DOCKER_REPO=${GITHUB_REPOSITORY_OWNER,,}" >>$GITHUB_ENV
+            echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Build and push
         id: docker_build
