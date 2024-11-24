@@ -14,6 +14,17 @@
   ],
   packageRules: [
     {
+      matchFileNames: [ "post_start/Dockerfile" ],
+      enabled: false,
+    },
+    {
+      matchPackageNames: [
+        'golang',
+        'nginx',
+      ],
+      enabled: false,
+    },
+    {
       matchDatasources: [
         'repology',
       ],
