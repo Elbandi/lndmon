@@ -1,0 +1,47 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  configMigration: true,
+  extends: [
+    'config:recommended',
+    'group:all',
+  ],
+  automerge: false,
+  separateMinorPatch: true,
+  gitAuthor: 'renovate[bot] <bot@renovateapp.com>',
+  enabledManagers: [
+    'dockerfile',
+    'custom.regex',
+  ],
+  packageRules: [
+    {
+      matchDatasources: [
+        'repology',
+      ],
+      groupName: 'alpine packages',
+      groupSlug: 'alpine',
+      matchPackageNames: [
+        '/^alpine_3_20/',
+      ],
+    },
+  ],
+  customManagers: [
+    {
+      description: 'Update packages set in Dockerfiles',
+      customType: 'regex',
+      fileMatch: [
+        '(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$',
+        '(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$',
+      ],
+      matchStrings: [
+        '#\\srenovate:\\sdatasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s(ENV|ARG) .*?_VERSION="(?<currentValue>.*)"\\s',
+      ],
+      versioningTemplate: '{{#if versioning}}{{{versioning}}}{{else}}loose{{/if}}',
+      datasourceTemplate: '{{#if datasource}}{{{datasource}}}{{else}}repology{{/if}}',
+    },
+  ],
+  dependencyDashboard: false,
+  labels: [
+    'dependencies',
+  ],
+  separateMajorMinor: false,
+}
