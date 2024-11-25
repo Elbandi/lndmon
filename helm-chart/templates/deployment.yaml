@@ -63,7 +63,7 @@ spec:
           secret:
             secretName: {{ .Values.lnd.credentialsExistingSecret.name }}
             items:
-              - key: {{ .Values.lnd.credentialsExistingSecret.tls_key }}
+              - key: {{ .Values.lnd.credentialsExistingSecret.tls_cert_key }}
                 path: tls.cert
         - name: lnd-macaroons
           secret:
