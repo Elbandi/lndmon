@@ -38,7 +38,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
             - "--lnd.host={{ .Values.lnd.host }}"
-            - "--prometheus.listenaddr=0.0.0.0"
+            - "--prometheus.listenaddr=0.0.0.0:{{ .Values.service.port }}"
             - "--disablehtlc"
           ports:
             - name: http
