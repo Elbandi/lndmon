@@ -14,6 +14,16 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+lnd:
+  host: 1.2.3.4:3003
+  credentialsExistingSecret:
+    ## Secret Name
+    name: lnd-credentials
+    ## Macaroon Key
+    macaroon_key: readonly_macaroon_base64
+    ## TLS Key
+    tls_cert_key: tls_cert_base64
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
