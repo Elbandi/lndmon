@@ -10,6 +10,12 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+initImage:
+  repository: lightninglabs/lndinit
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: v0.1.22-beta-lnd-v0.18.3-beta
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

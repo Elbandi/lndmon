@@ -30,6 +30,18 @@ spec:
       serviceAccountName: {{ include "lndmon.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.initImage.tag }}
+      initContainers:
+        - name: wait-ready
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
+          imagePullPolicy: {{ .Values.initImage.pullPolicy }}
+          command: [ "/bin/lndinit" ]
+          args:
+            - "wait-ready"
+            - "--rpcserver={{ .Values.lnd.host }}"
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
