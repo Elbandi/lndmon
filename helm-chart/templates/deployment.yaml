@@ -40,6 +40,7 @@ spec:
           command: [ "/bin/lndinit" ]
           args:
             - "wait-ready"
+            - "--verbose"
             - "--rpcserver={{ .Values.lnd.host }}"
       {{- end }}
       containers:
