@@ -18,7 +18,7 @@ COPY . /go/src/github.com/lightninglabs/lndmon/
 RUN cd /go/src/github.com/lightninglabs/lndmon/cmd/lndmon && go build
 
 # Start a new image
-FROM alpine:3.21@sha256:21dc6063fd678b478f57c0e13f47560d0ea4eeba26dfc947b2a4f81f686b9f45 as final
+FROM alpine:3.21@sha256:b97e2a89d0b9e4011bb88c02ddf01c544b8c781acf1f4d559e7c8f12f1047ac3 as final
 
 # renovate: datasource=repology depName=alpine_3_20/bash versioning=loose
 ARG BASH_VERSION="5.2.26-r0"
