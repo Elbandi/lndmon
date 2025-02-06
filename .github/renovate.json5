@@ -31,7 +31,7 @@
       groupName: 'alpine packages',
       groupSlug: 'alpine',
       matchPackageNames: [
-        '/^alpine_3_20/',
+        '/^alpine_/',
       ],
     },
   ],
