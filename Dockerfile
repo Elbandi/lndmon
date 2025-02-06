@@ -24,10 +24,10 @@ FROM alpine:3.21@sha256:56fa17d2a7e7f168a043a2712e63aed1f8543aeafdcee47c58dcffe3
 ARG BASH_VERSION="5.2.26-r0"
 
 # renovate: datasource=repology depName=alpine_3_21/busybox versioning=loose
-ARG BUSYBOX_VERSION="1.36.1-r29"
+ARG BUSYBOX_VERSION="1.37.0-r12"
 
 # renovate: datasource=repology depName=alpine_3_21/iputils versioning=loose
-ARG IPUTILS_VERSION="20240117-r0"
+ARG IPUTILS_VERSION="20240905-r0"
 
 COPY --from=builder /go/src/github.com/lightninglabs/lndmon/cmd/lndmon/lndmon /bin/
 
